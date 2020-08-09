@@ -21,7 +21,7 @@
     "secp256k1": "^4.0.1",
     "serverless": "^1.76.1",
     "serverless-webpack": "^5.3.3",
-    "tezos-oracle-lib": "^1.0.21",
+    "@tacoinfra/harbinger-lib": "^1.0.21",
     "ts-loader": "^8.0.1",
     "webpack": "^4.44.0"
   },

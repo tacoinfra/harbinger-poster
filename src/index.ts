@@ -1,4 +1,4 @@
-import { AwsKmsSigner, AwsKmsKeyStore, LogLevel, initOracleLib, updateOracleFromCoinbaseOnce } from 'tezos-oracle-lib'
+import { AwsKmsSigner, AwsKmsKeyStore, LogLevel, initOracleLib, updateOracleFromCoinbaseOnce } from '@tacoinfra/harbinger-lib'
 
 const logLevel = LogLevel.Debug
 

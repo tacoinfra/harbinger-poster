@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
 import main from './src/index'
-import { AwsKmsKeyStore, initOracleLib } from 'tezos-oracle-lib'
+import { AwsKmsKeyStore, initOracleLib } from '@tacoinfra/harbinger-lib'
 
 export const updateOracle: APIGatewayProxyHandler = async (_event, _context) => {
   const awsKmsKeyId = process.env.AWS_KMS_KEY_ID

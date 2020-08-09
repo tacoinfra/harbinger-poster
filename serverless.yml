@@ -11,7 +11,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   apiKeys:
-    - ${opt:stage,'testnet'}
+    - ${opt:stage,'testnet'}-poster
   memorySize: 256
   timeout: 30
 
