@@ -1,0 +1,29 @@
+{
+  "name": "@tacoinfra/harbinger-poster",
+  "version": "1.0.0",
+  "description": "A Serverless framework application that posts signed prices from an exchange to Harbinger reference Tezos oracle contracts.",
+  "scripts": {
+    "build": "tsc -d",
+    "lint": "eslint . --ext .ts --fix",
+    "test": "mocha -r ts-node/register test/*.ts"
+  },
+  "author": "Blockscale LLC",
+  "license": "MIT",
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.51",
+    "@types/aws-sdk": "^2.7.0",
+    "@types/secp256k1": "^4.0.1",
+    "aws-lambda": "^1.0.6",
+    "aws-sdk": "^2.713.0",
+    "blakejs": "^1.1.0",
+    "bs58check": "^2.1.2",
+    "conseiljs": "5.0.3-beta.2",
+    "secp256k1": "^4.0.1",
+    "serverless": "^1.76.1",
+    "serverless-webpack": "^5.3.3",
+    "tezos-oracle-lib": "^1.0.21",
+    "ts-loader": "^8.0.1",
+    "webpack": "^4.44.0"
+  },
+  "devDependencies": {}
+}
