@@ -1,34 +1,40 @@
-import { AwsKmsSigner, AwsKmsKeyStore, LogLevel, initOracleLib, updateOracleFromCoinbaseOnce } from '@tacoinfra/harbinger-lib'
+import {
+  AwsKmsSigner,
+  AwsKmsKeyStore,
+  LogLevel,
+  initOracleLib,
+  updateOracleFromCoinbaseOnce,
+} from '@tacoinfra/harbinger-lib'
 
 const logLevel = LogLevel.Debug
 
 export default async function main(
-    oracleContractAddress: string,
-    awsKmsKeyId: string,
-    awsRegion: string,
-    nodeURL: string,
-    apiKeyId: string,
-    apiSecret: string,
-    apiPassphrase: string,
-    assetNames: Array<string>
+  oracleContractAddress: string,
+  awsKmsKeyId: string,
+  awsRegion: string,
+  nodeURL: string,
+  apiKeyId: string,
+  apiSecret: string,
+  apiPassphrase: string,
+  assetNames: Array<string>,
 ): Promise<string> {
-    initOracleLib('debug')
+  initOracleLib('debug')
 
-    const store = await AwsKmsKeyStore.from(awsKmsKeyId, awsRegion)
-    const signer = new AwsKmsSigner(awsKmsKeyId, awsRegion)
+  const store = await AwsKmsKeyStore.from(awsKmsKeyId, awsRegion)
+  const signer = new AwsKmsSigner(awsKmsKeyId, awsRegion)
 
-    const hash = await updateOracleFromCoinbaseOnce(
-        logLevel,
-        apiKeyId,
-        apiSecret,
-        apiPassphrase,
-        oracleContractAddress,
-        assetNames,
-        store,
-        signer,
-        nodeURL,
-        undefined
-    )
+  const hash = await updateOracleFromCoinbaseOnce(
+    logLevel,
+    apiKeyId,
+    apiSecret,
+    apiPassphrase,
+    oracleContractAddress,
+    assetNames,
+    store,
+    signer,
+    nodeURL,
+    undefined,
+  )
 
-    return hash
+  return hash
 }
