@@ -4,8 +4,8 @@
     // extend your base config so you don't have to redefine your compilerOptions
     "extends": "./tsconfig.json",
     "include": [
-        "*.ts",
-        "src/*.ts",
-        "test/**/*.ts",
+        "handler.ts",
+        "src/**/*.ts",
+        "test/**/*.ts"
     ]
 }

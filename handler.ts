@@ -2,7 +2,10 @@ import { APIGatewayProxyHandler } from 'aws-lambda'
 import main from './src/index'
 import { AwsKmsKeyStore, initOracleLib } from '@tacoinfra/harbinger-lib'
 
-export const updateOracle: APIGatewayProxyHandler = async (_event, _context) => {
+export const updateOracle: APIGatewayProxyHandler = async (
+  _event,
+  _context,
+) => {
   const awsKmsKeyId = process.env.AWS_KMS_KEY_ID
   const awsKmsKeyRegion = process.env.AWS_KMS_KEY_REGION
   const oracleContractAddress = process.env.ORACLE_CONTRACT_ADDRESS
@@ -24,7 +27,7 @@ export const updateOracle: APIGatewayProxyHandler = async (_event, _context) => 
   ) {
     return {
       statusCode: 500,
-      body: "Fatal: Missing an input. Please check your configuration.",
+      body: 'Fatal: Missing an input. Please check your configuration.',
     }
   }
 
@@ -39,7 +42,7 @@ export const updateOracle: APIGatewayProxyHandler = async (_event, _context) => 
       coinbaseApiKeyId,
       coinbaseApiKeySecret,
       coinbaseApiKeyPassphrase,
-      assets
+      assets,
     )
     return {
       statusCode: 200,
@@ -48,7 +51,8 @@ export const updateOracle: APIGatewayProxyHandler = async (_event, _context) => 
   } catch (exception) {
     return {
       statusCode: 500,
-      body: "Error: " + exception.message
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      body: `Error: ${JSON.stringify(exception.message)}`,
     }
   }
 }
@@ -75,7 +79,7 @@ export const info: APIGatewayProxyHandler = async (_event, _context) => {
   ) {
     return {
       statusCode: 500,
-      body: "Fatal: Missing an input. Please check your configuration.",
+      body: 'Fatal: Missing an input. Please check your configuration.',
     }
   }
 
@@ -88,11 +92,11 @@ export const info: APIGatewayProxyHandler = async (_event, _context) => {
     oracleContractAddress,
     nodeAddr,
     assetList,
-    signerPublicKeyHash: store.publicKeyHash
+    signerPublicKeyHash: store.publicKeyHash,
   }
 
   return {
     statusCode: 200,
-    body: JSON.stringify(resp)
+    body: JSON.stringify(resp),
   }
 }
