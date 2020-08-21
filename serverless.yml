@@ -79,7 +79,7 @@ functions:
     handler: handler.updateOracle
     reservedConcurrency: 1
     events:
-      - schedule: rate(2 minutes)
+      - schedule: rate(15 minutes)
   manualUpdateOracle:
     handler: handler.updateOracle      
     events:
