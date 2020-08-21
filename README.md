@@ -1,8 +1,14 @@
 # Harbinger Serverless Poster
 
+## About
+
+`harbinger-poster` is a reference implementation for a server side hosted poster for the Harbinger oracle system. The app is written in [Serverless]() and Typescript and can deploy to [AWS]() and sign via an HSM in the cloud with [AWS KMS Support].  To get started with Harbinger, visit the [main documentation](https://github.com/tacoinfra/harbinger).
+
+This library provides functionality for posting update to Harbinger. Users interested in posting prices might also be interested in [Harbinger CLI]() which provides a non-hosted poster solution. Entities who wish to sign prices for Harbinger may want to look at [Harbinger Signer](). Developers of new Harbinger components may be interested in [harbinger-lib]().
+
 ### Introduction
 
-In order to ensure that the data in the Harbinger Tezos price storage contract is kept up to date, you can choose to run a command line process that periodically retrieves a signed price from the Coinbase Pro API and generates the Tezos operation that updates the contract, or you can deploy this [Serverless Framework](https://serverless.com) application to [Amazon Web Services](https://aws.amazon.com) and it will run every 5 minutes and perform these same tasks for you automatically. Of course, you are free to run the CLI tool instead, but the Serverless application doesn't require that you run a long-lived server.
+In order to ensure that the data in the Harbinger Tezos price storage contract is kept up to date, you can choose to run the aforementioned [command line process](https://github.com/tacoinfra/harbinger-cli) that periodically retrieves a signed price from the Coinbase Pro API and generates the Tezos operation that updates the contract, or you can deploy this [Serverless Framework](https://serverless.com) application to [Amazon Web Services](https://aws.amazon.com) and it will run every 5 minutes and perform these same tasks for you automatically. Of course, you are free to run the CLI tool instead, but the Serverless application doesn't require that you run a long-lived server.
 
 To be clear, you only need to run one or the other: The command line updater **<em>OR</em>** the Serverless updater, not both. Running both won't hurt anything though.
 
@@ -149,3 +155,7 @@ Congratulations, you've just deployed a Serverless application that will automat
  ![Info Output](images/info-output.png)
 
  2. Fund the `tz2...` account by transferring a small amount of XTZ to it. Please note that because it is a brand new account you will need to also use the `--burn-cap 0.257` option when you send to it.
+
+## Credits
+
+Harbinger is written and maintained by [Luke Youngblood]() and [Keefer Taylor](). 
