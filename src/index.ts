@@ -17,6 +17,7 @@ export default async function main(
   apiSecret: string,
   apiPassphrase: string,
   assetNames: Array<string>,
+  normalizerContractAddress: string | undefined
 ): Promise<string> {
   initOracleLib('debug')
 
@@ -33,7 +34,7 @@ export default async function main(
     store,
     signer,
     nodeURL,
-    undefined,
+    normalizerContractAddress,
   )
 
   return hash

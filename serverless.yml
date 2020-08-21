@@ -23,6 +23,7 @@ provider:
     AWS_KMS_KEY_ID: ${ssm:${self:custom.awsKmsKeyId.${self:provider.stage}}~true}
     AWS_KMS_KEY_REGION: ${self:custom.awsKmsKeyRegion.${self:provider.stage}}
     ORACLE_CONTRACT_ADDRESS: ${ssm:${self:custom.oracleContractAddress.${self:provider.stage}}~true}
+    NORMALIZER_CONTRACT_ADDRESS: ${ssm:${self:custom.normalizerContractAddress.${self:provider.stage}}~true}
     NODE_ADDR: ${self:custom.nodeAddr.${self:provider.stage}}
     COINBASE_API_KEY_ID: ${ssm:${self:custom.coinbaseApiKeyId.${self:provider.stage}}~true}
     COINBASE_API_KEY_SECRET: ${ssm:${self:custom.coinbaseApiKeySecret.${self:provider.stage}}~true}
@@ -45,7 +46,7 @@ custom:
   # The address of the Oracle Contract.
   oracleContractAddress:
     testnet: "/tezos/testnet-contract-address"
-    mainnet: "/tezos/mainnet-contract-address"
+    mainnet: "/tezos/mainnet-contract-address"  
   # The address of a node.    
   nodeAddr:
     testnet: "https://rpctest.tzbeta.net"
@@ -66,6 +67,10 @@ custom:
   assets:        
     testnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
     mainnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
+  # The address of the Normalizer Contract. If undefined, updates are not pushed.
+  normalizerContractAddress:
+    testnet: "KT1HTznmLzHrE6HEcfPSkzdV7wLt7GWEBqHK"
+    # mainnet: "KT1HTznmLzHrE6HEcfPSkzdV7wLt7GWEBqHK"  
 
 # Functions
 functions:
