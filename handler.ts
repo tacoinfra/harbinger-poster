@@ -14,6 +14,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
   const coinbaseApiKeySecret = process.env.COINBASE_API_KEY_SECRET
   const coinbaseApiKeyPassphrase = process.env.COINBASE_API_KEY_PASSPHRASE
   const assetList = process.env.ASSETS
+  const normalizerContractAddress = process.env.NORMALIZER_CONTRACT_ADDRESS !== "" ? process.env.NORMALIZER_CONTRACT_ADDRESS : undefined
 
   if (
     awsKmsKeyId === undefined ||
@@ -43,6 +44,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
       coinbaseApiKeySecret,
       coinbaseApiKeyPassphrase,
       assets,
+      normalizerContractAddress
     )
     return {
       statusCode: 200,
