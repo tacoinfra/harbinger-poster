@@ -51,6 +51,8 @@ export const updateOracle: APIGatewayProxyHandler = async (
       body: hash,
     }
   } catch (exception) {
+    console.log('Caught exception: ' + JSON.stringify(exception))
+
     return {
       statusCode: 500,
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
