@@ -67,10 +67,10 @@ custom:
   assets:        
     testnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
     mainnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
-  # The address of the Normalizer Contract. If undefined, updates are not pushed.
+  # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
     testnet: "KT1HTznmLzHrE6HEcfPSkzdV7wLt7GWEBqHK"
-    # mainnet: "KT1HTznmLzHrE6HEcfPSkzdV7wLt7GWEBqHK"  
+    mainnet: ""  
 
 # Functions
 functions:
