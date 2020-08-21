@@ -45,11 +45,11 @@ custom:
     mainnet: "eu-west-1"
   # The address of the Oracle Contract.
   oracleContractAddress:
-    testnet: ""
+    testnet: "KT1ScePVp9xgJpM5MDGU9qJGLpb8A2iSrpji"
     mainnet: ""
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
-    testnet: ""
+    testnet: "KT1Et8KdjXJerxZfp64aX1dYydUy1aSsPRHG"
     mainnet: ""
   # The address of a node.    
   nodeAddr:
