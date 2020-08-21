@@ -47,6 +47,10 @@ custom:
   oracleContractAddress:
     testnet: "/tezos/testnet-contract-address"
     mainnet: "/tezos/mainnet-contract-address"  
+  # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
+  normalizerContractAddress:
+    testnet: "/tezos/testnet-normalizer-address"
+    mainnet: "/tezos/mainnet-normalizer-address"     
   # The address of a node.    
   nodeAddr:
     testnet: "https://rpctest.tzbeta.net"
@@ -67,10 +71,7 @@ custom:
   assets:        
     testnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
     mainnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
-  # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
-  normalizerContractAddress:
-    testnet: "KT1HTznmLzHrE6HEcfPSkzdV7wLt7GWEBqHK"
-    mainnet: ""  
+
 
 # Functions
 functions:
