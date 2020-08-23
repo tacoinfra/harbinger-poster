@@ -4,12 +4,14 @@ import {
   LogLevel,
   initOracleLib,
   updateOracleFromCoinbaseOnce,
+  updateOracleFromFeedOnce,
 } from '@tacoinfra/harbinger-lib'
 
 const logLevel = LogLevel.Debug
 
 export default async function main(
   oracleContractAddress: string,
+  signerUrl: string,
   awsKmsKeyId: string,
   awsRegion: string,
   nodeURL: string,
@@ -17,25 +19,39 @@ export default async function main(
   apiSecret: string,
   apiPassphrase: string,
   assetNames: Array<string>,
-  normalizerContractAddress: string | undefined
+  normalizerContractAddress: string | undefined,
 ): Promise<string> {
   initOracleLib('debug')
 
   const store = await AwsKmsKeyStore.from(awsKmsKeyId, awsRegion)
   const signer = new AwsKmsSigner(awsKmsKeyId, awsRegion)
 
-  const hash = await updateOracleFromCoinbaseOnce(
-    logLevel,
-    apiKeyId,
-    apiSecret,
-    apiPassphrase,
-    oracleContractAddress,
-    assetNames,
-    store,
-    signer,
-    nodeURL,
-    normalizerContractAddress,
-  )
+  let hash = ''
+  if (signerUrl.includes('coinbase.com')) {
+    hash = await updateOracleFromCoinbaseOnce(
+      logLevel,
+      apiKeyId,
+      apiSecret,
+      apiPassphrase,
+      oracleContractAddress,
+      assetNames,
+      store,
+      signer,
+      nodeURL,
+      normalizerContractAddress,
+    )
+  } else {
+    hash = await updateOracleFromFeedOnce(
+      logLevel,
+      signerUrl,
+      oracleContractAddress,
+      assetNames,
+      store,
+      signer,
+      nodeURL,
+      normalizerContractAddress,
+    )
+  }
 
   return hash
 }
