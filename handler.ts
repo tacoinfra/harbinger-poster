@@ -14,7 +14,11 @@ export const updateOracle: APIGatewayProxyHandler = async (
   const coinbaseApiKeySecret = process.env.COINBASE_API_KEY_SECRET
   const coinbaseApiKeyPassphrase = process.env.COINBASE_API_KEY_PASSPHRASE
   const assetList = process.env.ASSETS
-  const normalizerContractAddress = process.env.NORMALIZER_CONTRACT_ADDRESS !== "" ? process.env.NORMALIZER_CONTRACT_ADDRESS : undefined
+  const normalizerContractAddress =
+    process.env.NORMALIZER_CONTRACT_ADDRESS !== ''
+      ? process.env.NORMALIZER_CONTRACT_ADDRESS
+      : undefined
+  const signerUrl = process.env.SIGNER_URL
 
   if (
     awsKmsKeyId === undefined ||
@@ -24,7 +28,8 @@ export const updateOracle: APIGatewayProxyHandler = async (
     coinbaseApiKeyId === undefined ||
     coinbaseApiKeySecret === undefined ||
     coinbaseApiKeyPassphrase === undefined ||
-    assetList === undefined
+    assetList === undefined ||
+    signerUrl === undefined
   ) {
     return {
       statusCode: 500,
@@ -37,6 +42,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
   try {
     const hash = await main(
       oracleContractAddress,
+      signerUrl,
       awsKmsKeyId,
       awsKmsKeyRegion,
       nodeAddr,
@@ -44,7 +50,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
       coinbaseApiKeySecret,
       coinbaseApiKeyPassphrase,
       assets,
-      normalizerContractAddress
+      normalizerContractAddress,
     )
     return {
       statusCode: 200,

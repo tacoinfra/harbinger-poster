@@ -44,7 +44,7 @@ custom:
   awsKmsKeyRegion: "eu-west-1"
   # The address of the Oracle Contract.
   signerURL:
-    coinbase: ""
+    coinbase: "pro.coinbase.com"
     binance: "https://binance.tzbeta.net/oracle"
     gemini: "https://gemini.tzbeta.net/oracle"
     okex: "https://okex.tzbeta.net/oracle"
