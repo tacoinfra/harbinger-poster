@@ -11,66 +11,72 @@ provider:
   name: aws
   runtime: nodejs12.x
   apiKeys:
-    - ${opt:stage,'testnet'}-poster
+    - ${opt:stage,'coinbase'}-poster
   memorySize: 256
   timeout: 30
 
-  stage: ${opt:stage,'testnet'}
-  region: eu-west-1
+  stage: ${opt:stage,'coinbase'}
+  region: ${self:custom.awsKmsKeyRegion}
 
   # Environment Variables
   environment:
-    AWS_KMS_KEY_ID: ${ssm:${self:custom.awsKmsKeyId.${self:provider.stage}}~true}
-    AWS_KMS_KEY_REGION: ${self:custom.awsKmsKeyRegion.${self:provider.stage}}
+    AWS_KMS_KEY_ID: ${ssm:${self:custom.awsKmsKeyId}}
+    AWS_KMS_KEY_REGION: ${self:custom.awsKmsKeyRegion}
+    SIGNER_URL: ${self:custom.signerURL.${self:provider.stage}}
     ORACLE_CONTRACT_ADDRESS: ${self:custom.oracleContractAddress.${self:provider.stage}}
     NORMALIZER_CONTRACT_ADDRESS: ${self:custom.normalizerContractAddress.${self:provider.stage}}
-    NODE_ADDR: ${self:custom.nodeAddr.${self:provider.stage}}
-    COINBASE_API_KEY_ID: ${ssm:${self:custom.coinbaseApiKeyId.${self:provider.stage}}~true}
-    COINBASE_API_KEY_SECRET: ${ssm:${self:custom.coinbaseApiKeySecret.${self:provider.stage}}~true}
-    COINBASE_API_KEY_PASSPHRASE: ${ssm:${self:custom.coinbaseApiKeyPassphrase.${self:provider.stage}}~true}
+    NODE_ADDR: ${self:custom.nodeAddr}
+    COINBASE_API_KEY_ID: ${ssm:${self:custom.coinbaseApiKeyId}~true}
+    COINBASE_API_KEY_SECRET: ${ssm:${self:custom.coinbaseApiKeySecret}~true}
+    COINBASE_API_KEY_PASSPHRASE: ${ssm:${self:custom.coinbaseApiKeyPassphrase}~true}
     ASSETS: ${self:custom.assets.${self:provider.stage}}
 
 # Custom Variables
 custom:
   stages:
-    - testnet
-    - mainnet
+    - coinbase
+    - binance
+    - gemini
+    - okex
   # AWS KMS Key ID.
-  awsKmsKeyId:
-    testnet: "/tezos/testnet-kms-key-id"
-    mainnet: "/tezos/mainnet-kms-key-id"
+  awsKmsKeyId: "/tezos/poster-kms-key-id"
   # AWS Region where AWS KMS Key is located.
-  awsKmsKeyRegion:
-    testnet: "eu-west-1"
-    mainnet: "eu-west-1"
+  awsKmsKeyRegion: "eu-west-1"
   # The address of the Oracle Contract.
+  signerURL:
+    coinbase: ""
+    binance: "https://binance.tzbeta.net/oracle"
+    gemini: "https://gemini.tzbeta.net/oracle"
+    okex: "https://okex.tzbeta.net/oracle"
   oracleContractAddress:
-    testnet: ""
-    mainnet: ""
+    coinbase: "KT1DW3yk1VKKk1hshPbNeb9a6SyJztsR4vSQ"
+    binance: "KT1DW3yk1VKKk1hshPbNeb9a6SyJztsR4vSQ"
+    gemini: "KT1XL23yxcyKJapWYnRno5LwSG5A2g4a2f79"
+    okex: "KT1HnZvuPPU5oo5vcPnuhbPWddmDsano8frq"
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
-    testnet: ""
-    mainnet: ""
-  # The address of a node.    
-  nodeAddr:
-    testnet: "https://rpctest.tzbeta.net"
-    mainnet: "https://rpc.tzbeta.net"
+    coinbase: "KT1BeQp7LtPCJZfPPJT4qYu5BfMYK6f8TJQL"
+    binance: "KT1BeQp7LtPCJZfPPJT4qYu5BfMYK6f8TJQL"
+    gemini: "KT1BGBGgZpWbE3PR164tTkriVnmfZh3m35au"
+    okex: "KT1BkJAxM8chZ9zScbdfj8mF8MRQJNVWbWFS"
+  # The address of a node, change to https://rpc.tzbeta.net for mainnet
+  nodeAddr: "https://rpctest.tzbeta.net"
   # A Coinbase Pro API Key ID
-  coinbaseApiKeyId:
-    testnet: "/tezos/testnet-pro-api-key"
-    mainnet: "/tezos/mainnet-pro-api-key"
+  coinbaseApiKeyId: "/tezos/coinbase-pro-api-key"
   # A Coinbase Pro API Key Secret
-  coinbaseApiKeySecret:
-    testnet: "/tezos/testnet-pro-api-secret"
-    mainnet: "/tezos/mainnet-pro-api-secret"
+  coinbaseApiKeySecret: "/tezos/coinbase-pro-api-secret"
   # A Coinbase Pro API Key Passphase
-  coinbaseApiKeyPassphrase:
-    testnet: "/tezos/testnet-pro-api-passphrase"
-    mainnet: "/tezos/mainnet-pro-api-passphrase"
+  coinbaseApiKeyPassphrase: "/tezos/coinbase-pro-api-passphrase"
   # Assets to update.
-  assets:        
-    testnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
-    mainnet: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
+  assets:
+    # These order books are all available on Coinbase Pro, feel free to add more
+    coinbase: "BAT-USDC,BTC-USD,COMP-USD,DAI-USDC,ETH-USD,KNC-USD,LINK-USD,REP-USD,XTZ-USD,ZRX-USD"
+    # These order books are all available on Binance, feel free to add more
+    binance: "BAT-USDT,BTC-USDT,COMP-USDT,DAI-USDT,ETH-USDT,KNC-USDT,LINK-USDT,REP-USDT,XTZ-USDT,ZRX-USDT,CRV-USDT,BAL-USDT,SNX-USDT"
+    # These order books are all available on Gemini, feel free to add more
+    gemini: "BTC-USD,ETH-USD,LINK-USD,DAI-USD,BAT-USD,OXT-USD,ZEC-USD,BCH-USD,LTC-USD"
+    # These order books are all available on OKEx, feel free to add more
+    okex: "BTC-USDT,ETH-USDT,LINK-USDT,XTZ-USDT,ATOM-USDT,CRV-USDT,BAL-USDT,SNX-USDT,KNC-USDT"
 
 
 # Functions
