@@ -2,9 +2,9 @@
 
 ## About
 
-`harbinger-poster` is a reference implementation for a server side hosted poster for the Harbinger oracle system. The app is written in [Serverless]() and Typescript and can deploy to [AWS]() and sign via an HSM in the cloud with [AWS KMS Support].  To get started with Harbinger, visit the [main documentation](https://github.com/tacoinfra/harbinger).
+`harbinger-poster` is a reference implementation for a server side hosted poster for the Harbinger oracle system. Harbinger-Poster is a [Serverless Framework](https://serverless.com/) application written in Typescript and deployed to [Amazon Web Services](https://aws.amazon.com). To get started with Harbinger, visit the [main documentation](https://github.com/tacoinfra/harbinger).
 
-This library provides functionality for posting update to Harbinger. Users interested in posting prices might also be interested in [Harbinger CLI]() which provides a non-hosted poster solution. Entities who wish to sign prices for Harbinger may want to look at [Harbinger Signer](). Developers of new Harbinger components may be interested in [harbinger-lib]().
+This library provides functionality for posting update to Harbinger. Users interested in posting prices might also be interested in [Harbinger CLI](https://github.com/tacoinfra/harbinger-poster) which provides a non-hosted poster solution. Entities who wish to sign prices for Harbinger may want to look at [Harbinger Signer](https://github.com/tacoinfra/harbinger-signer). Developers of new Harbinger components may be interested in [harbinger-lib](https://github.com/tacoinfra/harbinger-lib).
 
 ### Introduction
 
@@ -154,4 +154,4 @@ Congratulations, you've just deployed a Serverless application that will automat
 
 ## Credits
 
-Harbinger is written and maintained by [Luke Youngblood]() and [Keefer Taylor](). 
+Harbinger is written and maintained by [Luke Youngblood](https://github.com/lyoungblood) and [Keefer Taylor](https://github.com/keefertaylor). 
