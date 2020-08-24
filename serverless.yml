@@ -49,16 +49,16 @@ custom:
     gemini: "https://gemini.tzbeta.net/oracle"
     okex: "https://okex.tzbeta.net/oracle"
   oracleContractAddress:
-    coinbase: "KT1DW3yk1VKKk1hshPbNeb9a6SyJztsR4vSQ"
-    binance: "KT1DW3yk1VKKk1hshPbNeb9a6SyJztsR4vSQ"
-    gemini: "KT1XL23yxcyKJapWYnRno5LwSG5A2g4a2f79"
-    okex: "KT1HnZvuPPU5oo5vcPnuhbPWddmDsano8frq"
+    coinbase: "KT1P7D7jt3PfjMpsEKPyao1kHQR93t7XR5zh"
+    binance: "KT1XZitEQjpKRUC1k5gpW5qVehiKqB7BfuJn"
+    gemini: "KT1VZprQjiuHG9qz2F7hhiSgzttq9qw6Vvb9"
+    okex: "KT1XnxcyYsPGXb5pCFeykcQvXggTcY1qfX1i"
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
-    coinbase: "KT1BeQp7LtPCJZfPPJT4qYu5BfMYK6f8TJQL"
-    binance: "KT1BeQp7LtPCJZfPPJT4qYu5BfMYK6f8TJQL"
-    gemini: "KT1BGBGgZpWbE3PR164tTkriVnmfZh3m35au"
-    okex: "KT1BkJAxM8chZ9zScbdfj8mF8MRQJNVWbWFS"
+    coinbase: "KT1DjVkXqvmCka8Da6T7gyd19y9efbibKvGM"
+    binance: "KT19VZrCTrMD4AAN21wJ3BJXSpaDauy845Rx"
+    gemini: "KT1VmHAi9Ktd8kydMZwabnoqBMiJjaTCCQLw"
+    okex: "KT1Q3SVmM2zjScMjHXjP9sS4rUx843XvUFqC"
   # The address of a node, change to https://rpc.tzbeta.net for mainnet
   nodeAddr: "https://rpctest.tzbeta.net"
   # A Coinbase Pro API Key ID
