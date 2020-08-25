@@ -103,7 +103,7 @@ In order to setup the Serverless application, you'll need to perform the followi
 
  24. Create two more parameters, one named `/tezos/coinbase-pro-api-passphrase` and the second one named `/tezos/coinbase-pro-api-secret` with the values that you saved previously in steps 19 and 21. These should both be of type `SecureString` as well.
 
- 25. Clone this repository to your local system, and edit lines 48-49 of `serverless.yml`. Replace the empty string with the public address (`KT1...`) of the oracle contract you deployed with the CLI earlier. Optionally, you can also edit lines 52-53 to specify the public address (`KT1...`) of the normalizer contract.
+ 25. Clone this repository to your local system, and edit lines 48-49 of `serverless.yml`. Replace the empty string with the public address (`KT1...`) of the oracle contract you deployed with the CLI earlier. Optionally, if you'd also like to push data to a normalizer as you post, you can also edit lines 52-53 to specify the public address (`KT1...`) of the normalizer contract. Otherwise, leave it as the empty string to not post updates. 
 
  26. Install all NPM dependencies by typing `npm i` inside the repository directory, then type `sls deploy` to deploy the application. If all goes well, you should see output similar to this. You'll want to save the two endpoints for use later.
 
