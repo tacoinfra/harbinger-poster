@@ -51,7 +51,7 @@ custom:
   oracleContractAddress:
     coinbase: "KT1P7D7jt3PfjMpsEKPyao1kHQR93t7XR5zh"
     binance: "KT1XZitEQjpKRUC1k5gpW5qVehiKqB7BfuJn"
-    gemini: "KT1VZprQjiuHG9qz2F7hhiSgzttq9qw6Vvb9"
+    gemini: "KT1XSdAhxb5N23382VJedusDBdcrHW6Ci7Wz"
     okex: "KT1XnxcyYsPGXb5pCFeykcQvXggTcY1qfX1i"
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
