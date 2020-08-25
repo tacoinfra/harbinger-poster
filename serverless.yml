@@ -55,10 +55,10 @@ custom:
     okex: "KT1XnxcyYsPGXb5pCFeykcQvXggTcY1qfX1i"
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
-    coinbase: "KT1DjVkXqvmCka8Da6T7gyd19y9efbibKvGM"
-    binance: "KT19VZrCTrMD4AAN21wJ3BJXSpaDauy845Rx"
-    gemini: "KT1VmHAi9Ktd8kydMZwabnoqBMiJjaTCCQLw"
-    okex: "KT1Q3SVmM2zjScMjHXjP9sS4rUx843XvUFqC"
+    coinbase: "KT1VsWxgE683MiXoaevLbXtpJqpWrcaWaQV7"
+    binance: "KT1Jo1txCBvGvpr3z11btiNvuFT7XG3dGkqy"
+    gemini: "KT1WWdELoQ82FBCEX2ENtAKiheSZ9Us89eMW"
+    okex: "KT1KS2HGyYuoVuNgqGh5947DhmZu7JsAyy58"
   # The address of a node, change to https://rpc.tzbeta.net for mainnet
   nodeAddr: "https://rpctest.tzbeta.net"
   # A Coinbase Pro API Key ID
