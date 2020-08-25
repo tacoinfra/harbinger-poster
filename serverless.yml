@@ -51,13 +51,13 @@ custom:
   oracleContractAddress:
     coinbase: "KT1P7D7jt3PfjMpsEKPyao1kHQR93t7XR5zh"
     binance: "KT1XZitEQjpKRUC1k5gpW5qVehiKqB7BfuJn"
-    gemini: "KT1XSdAhxb5N23382VJedusDBdcrHW6Ci7Wz"
+    gemini: "KT1VZprQjiuHG9qz2F7hhiSgzttq9qw6Vvb9"
     okex: "KT1XnxcyYsPGXb5pCFeykcQvXggTcY1qfX1i"
   # The address of the Normalizer Contract. If the empty string is provided, updates are not pushed.
   normalizerContractAddress:
     coinbase: "KT1VsWxgE683MiXoaevLbXtpJqpWrcaWaQV7"
     binance: "KT1Jo1txCBvGvpr3z11btiNvuFT7XG3dGkqy"
-    gemini: "KT1WWdELoQ82FBCEX2ENtAKiheSZ9Us89eMW"
+    gemini: "KT1XSdAhxb5N23382VJedusDBdcrHW6Ci7Wz"
     okex: "KT1KS2HGyYuoVuNgqGh5947DhmZu7JsAyy58"
   # The address of a node, change to https://rpc.tzbeta.net for mainnet
   nodeAddr: "https://rpctest.tzbeta.net"
