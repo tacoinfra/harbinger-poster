@@ -1,6 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
 import main from './src/index'
-import { AwsKmsKeyStore, initOracleLib } from '@tacoinfra/harbinger-lib'
+import { initOracleLib } from '@tacoinfra/harbinger-lib'
+import { KmsKeyStore } from '@tacoinfra/conseil-kms'
 
 export const updateOracle: APIGatewayProxyHandler = async (
   _event,
@@ -93,7 +94,7 @@ export const info: APIGatewayProxyHandler = async (_event, _context) => {
 
   initOracleLib('error')
 
-  const store = await AwsKmsKeyStore.from(awsKmsKeyId, awsKmsKeyRegion)
+  const store = await KmsKeyStore.from(awsKmsKeyId, awsKmsKeyRegion)
   const resp = {
     awsKmsKeyId,
     awsKmsKeyRegion,
