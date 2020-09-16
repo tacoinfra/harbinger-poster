@@ -1,11 +1,10 @@
 import {
-  AwsKmsSigner,
-  AwsKmsKeyStore,
   LogLevel,
   initOracleLib,
   updateOracleFromCoinbaseOnce,
   updateOracleFromFeedOnce,
 } from '@tacoinfra/harbinger-lib'
+import { KmsKeyStore, KmsSigner } from '@tacoinfra/conseil-kms'
 
 const logLevel = LogLevel.Debug
 
@@ -23,8 +22,8 @@ export default async function main(
 ): Promise<string> {
   initOracleLib('debug')
 
-  const store = await AwsKmsKeyStore.from(awsKmsKeyId, awsRegion)
-  const signer = new AwsKmsSigner(awsKmsKeyId, awsRegion)
+  const store = await KmsKeyStore.from(awsKmsKeyId, awsRegion)
+  const signer = new KmsSigner(awsKmsKeyId, awsRegion)
 
   let hash = ''
   if (signerUrl.includes('coinbase.com')) {
