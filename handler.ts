@@ -20,6 +20,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
       ? process.env.NORMALIZER_CONTRACT_ADDRESS
       : undefined
   const signerUrl = process.env.SIGNER_URL
+  const enableZeroFees = process.env.ENABLE_ZERO_FEES === 'TRUE'
 
   if (
     awsKmsKeyId === undefined ||
@@ -52,6 +53,7 @@ export const updateOracle: APIGatewayProxyHandler = async (
       coinbaseApiKeyPassphrase,
       assets,
       normalizerContractAddress,
+      enableZeroFees
     )
     return {
       statusCode: 200,
