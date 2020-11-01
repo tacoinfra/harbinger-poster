@@ -19,6 +19,7 @@ export default async function main(
   apiPassphrase: string,
   assetNames: Array<string>,
   normalizerContractAddress: string | undefined,
+  enableZeroFees: boolean
 ): Promise<string> {
   initOracleLib('debug')
 
@@ -38,6 +39,7 @@ export default async function main(
       signer,
       nodeURL,
       normalizerContractAddress,
+      enableZeroFees
     )
   } else {
     hash = await updateOracleFromFeedOnce(
@@ -49,6 +51,7 @@ export default async function main(
       signer,
       nodeURL,
       normalizerContractAddress,
+      enableZeroFees
     )
   }
 
