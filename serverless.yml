@@ -20,7 +20,7 @@ provider:
 
   # Environment Variables
   environment:
-    AWS_KMS_KEY_ID: ${ssm:${self:custom.awsKmsKeyId}}
+    AWS_KMS_KEY_ID: ${ssm:${self:custom.awsKmsKeyId.${self:provider.stage}}}
     AWS_KMS_KEY_REGION: ${self:custom.awsKmsKeyRegion}
     SIGNER_URL: ${self:custom.signerURL.${self:provider.stage}}
     ORACLE_CONTRACT_ADDRESS: ${self:custom.oracleContractAddress.${self:provider.stage}}
@@ -40,7 +40,11 @@ custom:
     - gemini
     - okex
   # AWS KMS Key ID.
-  awsKmsKeyId: "/tezos/poster-kms-key-id"
+  awsKmsKeyId:
+    coinbase: "/tezos/poster-kms-key-id"
+    binance: "/tezos/binance-poster-kms-key-id"
+    gemini: "/tezos/gemini-poster-kms-key-id"
+    okex: "/tezos/okex-poster-kms-key-id"
   # AWS Region where AWS KMS Key is located.
   awsKmsKeyRegion: "eu-west-1"
   # The address of the Oracle Contract.
@@ -61,7 +65,7 @@ custom:
     gemini: "KT1VYnz5peWhfPcpBiViBZXa6Z8na3gqdkZS"
     okex: "KT1NF3n2nPNEa5bd88V4tk1vGWhFfugwuw7K"
   # The address of a node, change to https://rpc.tzbeta.net for mainnet
-  nodeAddr: "http://zeronet-baker-baker-NLB-be2b5081b29b51f7.elb.eu-west-1.amazonaws.com:8732"
+  nodeAddr: "https://rpctest.tzbeta.net"
   # A Coinbase Pro API Key ID
   coinbaseApiKeyId: "/tezos/coinbase-pro-api-key"
   # A Coinbase Pro API Key Secret
@@ -80,10 +84,10 @@ custom:
     okex: "BTC-USDT,ETH-USDT,LINK-USDT,XTZ-USDT,ATOM-USDT,CRV-USDT,BAL-USDT,SNX-USDT,KNC-USDT"
   # If set to `TRUE` then zero fee updates will be applied.
   enableZeroFees:
-    coinbase: "TRUE"
-    binance: "TRUE"
-    gemini: "TRUE"
-    okex: "TRUE"
+    coinbase: "FALSE"
+    binance: "FALSE"
+    gemini: "FALSE"
+    okex: "FALSE"
 
 # Functions
 functions:
@@ -92,13 +96,6 @@ functions:
     reservedConcurrency: 1
     events:
       - schedule: rate(5 minutes)
-    vpc:
-      securityGroupIds:
-        - sg-05e83ca1a18d1c1ea
-      subnetIds:
-        - subnet-065544c87a2d0171f
-        - subnet-07b6ca8ac98c09b28
-        - subnet-06e4a7465551fc1bb
   manualUpdateOracle:
     handler: handler.updateOracle      
     events:
@@ -106,13 +103,6 @@ functions:
           method: get
           path: update
           private: true
-    vpc:
-      securityGroupIds:
-        - sg-05e83ca1a18d1c1ea
-      subnetIds:
-        - subnet-065544c87a2d0171f
-        - subnet-07b6ca8ac98c09b28
-        - subnet-06e4a7465551fc1bb
   getInfo:
     handler: handler.info
     events:
