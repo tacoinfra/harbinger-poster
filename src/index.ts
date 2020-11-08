@@ -1,7 +1,6 @@
 import {
   LogLevel,
   initOracleLib,
-  updateOracleFromCoinbaseOnce,
   updateOracleFromFeedOnce,
 } from '@tacoinfra/harbinger-lib'
 import { KmsKeyStore, KmsSigner } from '@tacoinfra/conseil-kms'
@@ -19,7 +18,7 @@ export default async function main(
   apiPassphrase: string,
   assetNames: Array<string>,
   normalizerContractAddress: string | undefined,
-  enableZeroFees: boolean
+  enableZeroFees: boolean,
 ): Promise<string> {
   initOracleLib('debug')
 
@@ -28,30 +27,30 @@ export default async function main(
 
   let hash = ''
   if (signerUrl.includes('coinbase.com')) {
-    hash = await updateOracleFromCoinbaseOnce(
-      logLevel,
-      apiKeyId,
-      apiSecret,
-      apiPassphrase,
-      oracleContractAddress,
-      assetNames,
-      store,
-      signer,
-      nodeURL,
-      normalizerContractAddress,
-      enableZeroFees
-    )
-  } else {
+    const options = { apiKeyId, apiSecret, apiPassphrase }
     hash = await updateOracleFromFeedOnce(
       logLevel,
-      signerUrl,
       oracleContractAddress,
       assetNames,
       store,
       signer,
       nodeURL,
       normalizerContractAddress,
-      enableZeroFees
+      enableZeroFees,
+      options,
+    )
+  } else {
+    const options = { signerUrl }
+    hash = await updateOracleFromFeedOnce(
+      logLevel,
+      oracleContractAddress,
+      assetNames,
+      store,
+      signer,
+      nodeURL,
+      normalizerContractAddress,
+      enableZeroFees,
+      options,
     )
   }
 
